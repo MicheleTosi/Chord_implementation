@@ -1,0 +1,119 @@
+version: "3"
+
+services:
+  registry:
+    build:
+      context: ./ #Si parte dalla root del progetto
+      dockerfile: ./DockerFiles/registry/Dockerfile #Path del docker file del registry
+    ports:
+      - "1234:1234" #Mappa la porta 1234 del server del container a quella dell'host
+    networks:
+      - my_network
+
+  node1:
+    build:
+      context: ./
+      dockerfile: ./DockerFiles/node/Dockerfile
+    ports:
+      - "8001:8001" #Mappa la porta 8001 del server con quella del container
+    environment:
+      - NODE_PORT=8001 #Porta esposta dal nodo
+    networks:
+      - my_network
+    depends_on:
+      - registry
+
+  node2:
+    build:
+      context: ./
+      dockerfile: ./DockerFiles/node/Dockerfile
+    ports:
+      - "8002:8002" #Mappa la porta 8001 del server con quella del container
+    environment:
+      - NODE_PORT=8002 #Porta esposta dal nodo
+    networks:
+      - my_network
+    depends_on:
+      - registry
+
+  node3:
+    build:
+      context: ./
+      dockerfile: ./DockerFiles/node/Dockerfile
+    ports:
+      - "8003:8003" #Mappa la porta 8001 del server con quella del container
+    environment:
+      - NODE_PORT=8003 #Porta esposta dal nodo
+    networks:
+      - my_network
+    depends_on:
+      - registry
+
+  node4:
+    build:
+      context: ./
+      dockerfile: ./DockerFiles/node/Dockerfile
+    ports:
+      - "8004:8004" #Mappa la porta 8001 del server con quella del container
+    environment:
+      - NODE_PORT=8004 #Porta esposta dal nodo
+    networks:
+      - my_network
+    depends_on:
+      - registry
+
+  node5:
+    build:
+      context: ./
+      dockerfile: ./DockerFiles/node/Dockerfile
+    ports:
+      - "8005:8005" #Mappa la porta 8001 del server con quella del container
+    environment:
+      - NODE_PORT=8005 #Porta esposta dal nodo
+    networks:
+      - my_network
+    depends_on:
+      - registry
+
+  node6:
+    build:
+      context: ./
+      dockerfile: ./DockerFiles/node/Dockerfile
+    ports:
+      - "8006:8006" #Mappa la porta 8001 del server con quella del container
+    environment:
+      - NODE_PORT=8006 #Porta esposta dal nodo
+    networks:
+      - my_network
+    depends_on:
+      - registry
+
+  node7:
+    build:
+      context: ./
+      dockerfile: ./DockerFiles/node/Dockerfile
+    ports:
+      - "8007:8007" #Mappa la porta 8001 del server con quella del container
+    environment:
+      - NODE_PORT=8007 #Porta esposta dal nodo
+    networks:
+      - my_network
+    depends_on:
+      - registry
+
+  node8:
+    build:
+      context: ./
+      dockerfile: ./DockerFiles/node/Dockerfile
+    ports:
+      - "8008:8008" #Mappa la porta 8001 del server con quella del container
+    environment:
+      - NODE_PORT=8008 #Porta esposta dal nodo
+    networks:
+      - my_network
+    depends_on:
+      - registry
+
+networks:
+  my_network:
+    driver: bridge

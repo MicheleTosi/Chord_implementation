@@ -1,0 +1,5 @@
+{
+  "description": "Attenzione: nodes deve essere <= 2^bits.",
+  "bits": 5,
+  "nodes": 8
+}
